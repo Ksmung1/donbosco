@@ -3,6 +3,7 @@ import image from "../assets/school.avif";
 import HsHome from "../HSLC/HsHome";
 import { useOutletContext } from "react-router-dom";
 import HrHome from "../HR/HrHome";
+import JbHome from "../JB/JbHome";
 import Slider from "../components/Slider";
 
 const informations = [
@@ -21,9 +22,9 @@ const THEME = {
   hs: { color: "#059669", soft: "rgba(5,150,105,0.12)", circle: "rgba(5,150,105,0.55)" }, // green
   hr: { color: "#2563eb", soft: "rgba(37,99,235,0.12)", circle: "rgba(37,99,235,0.55)" }, // blue
   jb: {
-    color: "#000",
-    soft: "rgba(248,113,113,0.12)",
-    circle: "rgba(248,113,113,0.55)",
+    color: "#f97316", // vibrant orange - perfect for kids section
+    soft: "rgba(249,115,22,0.12)",
+    circle: "rgba(249,115,22,0.55)",
   }
   
 };
@@ -198,13 +199,10 @@ const Home = () => {
             <HsHome />
           ) : state === "hr" ? (
             <HrHome/>
+          ) : state === "jb" ? (
+            <JbHome/>
           ) : (
-            <div className="p-6">
-              <h3 className="text-xl font-semibold" style={{ color: "var(--primary)" }}>
-                JB Section
-              </h3>
-              <p className="mt-2 text-gray-600">JB specific content goes here.</p>
-            </div>
+            <HsHome />
           )}
         </div>
       </section>

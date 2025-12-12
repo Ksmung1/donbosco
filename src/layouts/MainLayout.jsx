@@ -4,13 +4,15 @@ import Footer from '../components/Footer';
 import StateSwitcher from '../components/StateSwitcher';
 import { useState } from 'react';
 import ScrollToTop from '../pages/ScrollToTop';
-import park from "../assets/park3.avif"
+import image from "../assets/donbosco.avif"
+import image2 from "../assets/corridor.avif"
+import image3 from "../assets/garden.avif"
 
 const MainLayout = () => {
   const states = [
-    { state: "hs", image: park, label: "HSLC" },
-    { state: "hr", image: park, label: "HR" },
-    { state: "jb", image: park, label: "JB" },
+    { state: "hs", image: image, label: "HSLC" },
+    { state: "hr", image: image2, label: "HR" },
+    { state: "jb", image: image3, label: "JB" },
   ];
   const [state, setState] = useState("hs");
   return (

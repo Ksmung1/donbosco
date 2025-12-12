@@ -17,7 +17,7 @@ const Contact = () => {
     {
       icon: <MapPin className="w-5 h-5" />,
       title: "Address",
-      content: "Salt Brook School, Tuibuong, Churachandpur, Manipur.",
+      content: "Salemveng, D.Phailien, Churachandpur, Manipur 795128",
     },
     {
       icon: <Phone className="w-5 h-5" />,
@@ -27,7 +27,7 @@ const Contact = () => {
     {
       icon: <Mail className="w-5 h-5" />,
       title: "Email",
-      content: "info.sbsccpur@gmail.com",
+      content: "info.dbcschool@gmail.com",
     },
     {
       icon: <Clock className="w-5 h-5" />,

@@ -47,7 +47,7 @@ const features = [
 ];
 
 const HrHome = () => {
-  const filteredStaffs = staffsData.filter((t) => t.state === "hs").slice(0, 6); // show up to 6
+  const filteredStaffs = staffsData.filter((t) => t.state === "hr").slice(0, 6); // show up to 6
   const filteredToppers = toppersData
     .filter((t) => t.state === "hr")
     .sort((a, b) => b.year - a.year)
@@ -112,7 +112,7 @@ const HrHome = () => {
                 aria-labelledby={`feature-${idx}`}
               >
                 <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center shadow-sm">
-                  <div className="text-green-500">{ftr.icon}</div>
+                  <div className="text-blue-500">{ftr.icon}</div>
                 </div>
                 <h3 id={`feature-${idx}`} className="text-lg font-semibold">
                   {ftr.heading}

@@ -1,14 +1,13 @@
 import React from "react";
 import { Users, FileText, Phone, Calendar, CheckSquare, UserCheck } from "lucide-react";
-import hall from "../assets/hall.avif";
-import teacher from "../assets/father.avif";
-import meeting from "../assets/class3.avif";
-import office from "../assets/class4.avif";
-
+import hall from "../assets/hall3.avif";
+import teacher from "../assets/father3.avif";
+import meeting from "../assets/class5.avif";
+import office from "../assets/office3.avif";
 
 const themeColors = {
-  primary: "#059669",
-  primarySoft: "rgba(5,150,105,0.08)",
+  primary: "#f97316",
+  primarySoft: "rgba(249,115,22,0.12)",
   neutralText: "#374151",
 };
 
@@ -69,7 +68,7 @@ const contact = {
   hours: "Mon - Fri, 9:00 AM - 4:30 PM",
 };
 
-export default function HsManagement() {
+export default function JbManagement() {
   return (
     <div
       className="text-gray-900"
@@ -82,48 +81,48 @@ export default function HsManagement() {
       {/* HERO */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 md:py-24">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-center">
-              <div>
-                <p
-                  className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider"
-                  style={{ background: "var(--primary-soft)", color: "var(--primary)" }}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-center">
+            <div>
+              <p
+                className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider"
+                style={{ background: "var(--primary-soft)", color: "var(--primary)" }}
+              >
+                Management
+              </p>
+
+              <h1 className="mt-4 text-2xl md:text-5xl font-extrabold tracking-tight">
+                {managementState.title}
+              </h1>
+
+              <p className="mt-4 text-xs md:text-md text-gray-600 max-w-xl">{managementState.subtitle}</p>
+              <p className="mt-4 text-xs md:text-md text-gray-600 max-w-xl">{managementState.intro}</p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <button
+                  className="inline-flex items-center gap-2 rounded-full px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-white shadow"
+                  style={{ background: "var(--primary)" }}
                 >
-                  Management
-                </p>
-
-                <h1 className="mt-4 text-2xl md:text-5xl font-extrabold tracking-tight">
-                  {managementState.title}
-                </h1>
-
-                <p className="mt-4 text-xs md:text-md text-gray-600 max-w-xl">{managementState.subtitle}</p>
-                <p className="mt-4 text-xs md:text-md text-gray-600 max-w-xl">{managementState.intro}</p>
-
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <button
-                    className="inline-flex items-center gap-2 rounded-full px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-white shadow"
-                    style={{ background: "var(--primary)" }}
-                  >
-                    Governance Documents
-                  </button>
-                  <button className="inline-flex items-center gap-2 rounded-full border px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-gray-700 hover:bg-gray-50 transition">
-                    Contact Administration
-                  </button>
-                </div>
+                  Governance Documents
+                </button>
+                <button className="inline-flex items-center gap-2 rounded-full border px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-gray-700 hover:bg-gray-50 transition">
+                  Contact Administration
+                </button>
               </div>
+            </div>
 
-              <div className="rounded-3xl overflow-hidden shadow-md">
-                <div className="relative aspect-video bg-gray-100">
-                  <img
-                    src={managementState.image}
-                    alt="Administration"
-                    className="object-cover w-full h-full"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
+            <div className="rounded-3xl overflow-hidden shadow-md">
+              <div className="relative aspect-video bg-gray-100">
+                <img
+                  src={managementState.image}
+                  alt="Administration"
+                  className="object-cover w-full h-full"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             </div>
           </div>
+        </div>
       </section>
 
       {/* BOARD / MANAGEMENT */}
@@ -131,21 +130,21 @@ export default function HsManagement() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-5xl font-extrabold mb-6 text-center md:text-left">Leadership Team</h2>
 
-            <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-              {boardMembers.map((m) => (
-                <div key={m.name} className="rounded-2xl bg-white p-4 md:p-6 shadow-sm flex gap-4 items-start">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden flex-shrink-0">
-                    <img src={m.image} alt={m.name} className="object-cover w-full h-full" />
-                  </div>
-
-                  <div>
-                    <div className="text-sm md:text-lg font-semibold">{m.name}</div>
-                    <div className="text-xs md:text-sm text-gray-500">{m.role}</div>
-                    <p className="mt-2 text-xs md:text-sm text-gray-600">{m.bio}</p>
-                  </div>
+          <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {boardMembers.map((m) => (
+              <div key={m.name} className="rounded-2xl bg-white p-4 md:p-6 shadow-sm flex gap-4 items-start">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden flex-shrink-0">
+                  <img src={m.image} alt={m.name} className="object-cover w-full h-full" loading="lazy" decoding="async" />
                 </div>
-              ))}
-            </div>
+
+                <div>
+                  <div className="text-sm md:text-lg font-semibold">{m.name}</div>
+                  <div className="text-xs md:text-sm text-gray-500">{m.role}</div>
+                  <p className="mt-2 text-xs md:text-sm text-gray-600">{m.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -153,30 +152,30 @@ export default function HsManagement() {
       <section className="bg-white py-5 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12">
-              <div>
-                <h3 className="text-xl md:text-2xl font-extrabold mb-4">Committees</h3>
-                <div className="space-y-3 md:space-y-4">
-                  {committees.map((c) => (
-                    <div key={c.title} className="p-3 md:p-4 border rounded-2xl bg-gray-50">
-                      <div className="text-sm md:text-base font-semibold">{c.title}</div>
-                      <div className="text-xs md:text-sm text-gray-600 mt-1">{c.description}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-xl md:text-2xl font-extrabold mb-4">Key Policies</h3>
-                <div className="space-y-3 md:space-y-4">
-                  {policies.map((p) => (
-                    <div key={p.title} className="p-3 md:p-4 border rounded-2xl">
-                      <div className="text-sm md:text-base font-semibold">{p.title}</div>
-                      <div className="text-xs md:text-sm text-gray-600 mt-1">{p.summary}</div>
-                    </div>
-                  ))}
-                </div>
+            <div>
+              <h3 className="text-xl md:text-2xl font-extrabold mb-4">Committees</h3>
+              <div className="space-y-3 md:space-y-4">
+                {committees.map((c) => (
+                  <div key={c.title} className="p-3 md:p-4 border rounded-2xl bg-gray-50">
+                    <div className="text-sm md:text-base font-semibold">{c.title}</div>
+                    <div className="text-xs md:text-sm text-gray-600 mt-1">{c.description}</div>
+                  </div>
+                ))}
               </div>
             </div>
+
+            <div>
+              <h3 className="text-xl md:text-2xl font-extrabold mb-4">Key Policies</h3>
+              <div className="space-y-3 md:space-y-4">
+                {policies.map((p) => (
+                  <div key={p.title} className="p-3 md:p-4 border rounded-2xl">
+                    <div className="text-sm md:text-base font-semibold">{p.title}</div>
+                    <div className="text-xs md:text-sm text-gray-600 mt-1">{p.summary}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -194,7 +193,7 @@ export default function HsManagement() {
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                   <div className="p-3 md:p-4 bg-white rounded-2xl shadow-sm">
                     <div className="flex items-center gap-3">
-                      <Phone className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#059669)] flex-shrink-0" />
+                      <Phone className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#f97316)] flex-shrink-0" />
                       <div>
                         <div className="text-xs md:text-sm font-medium">Phone</div>
                         <div className="text-xs md:text-sm text-gray-600">{contact.phone}</div>
@@ -204,7 +203,7 @@ export default function HsManagement() {
 
                   <div className="p-3 md:p-4 bg-white rounded-2xl shadow-sm">
                     <div className="flex items-center gap-3">
-                      <FileText className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#059669)] flex-shrink-0" />
+                      <FileText className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#f97316)] flex-shrink-0" />
                       <div>
                         <div className="text-xs md:text-sm font-medium">Email</div>
                         <div className="text-xs md:text-sm text-gray-600">{contact.email}</div>
@@ -214,7 +213,7 @@ export default function HsManagement() {
 
                   <div className="p-3 md:p-4 bg-white rounded-2xl shadow-sm">
                     <div className="flex items-center gap-3">
-                      <Calendar className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#059669)] flex-shrink-0" />
+                      <Calendar className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#f97316)] flex-shrink-0" />
                       <div>
                         <div className="text-xs md:text-sm font-medium">Office Hours</div>
                         <div className="text-xs md:text-sm text-gray-600">{contact.hours}</div>
@@ -224,7 +223,7 @@ export default function HsManagement() {
 
                   <div className="p-3 md:p-4 bg-white rounded-2xl shadow-sm">
                     <div className="flex items-center gap-3">
-                      <UserCheck className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#059669)] flex-shrink-0" />
+                      <UserCheck className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#f97316)] flex-shrink-0" />
                       <div>
                         <div className="text-xs md:text-sm font-medium">Office</div>
                         <div className="text-xs md:text-sm text-gray-600">{contact.office}</div>
@@ -234,12 +233,12 @@ export default function HsManagement() {
                 </div>
               </div>
 
-              <div className="rounded-2xl overflow-hidden bg-white shadow-sm">
-                <div className="aspect-video">
-                  <img src={office} alt="Admin office" className="object-cover w-full h-full" loading="lazy" decoding="async" />
-                </div>
+            <div className="rounded-2xl overflow-hidden bg-white shadow-sm">
+              <div className="aspect-video">
+                <img src={office} alt="Admin office" className="object-cover w-full h-full" loading="lazy" decoding="async" />
               </div>
             </div>
+          </div>
         </div>
       </section>
 
@@ -276,7 +275,7 @@ export default function HsManagement() {
             <div className="mt-6 flex items-center justify-center gap-3 md:gap-4">
               <a
                 href={`mailto:${contact.email}`}
-                className="inline-flex items-center bg-[var(--primary,#059669)] text-white px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-medium shadow hover:opacity-95 transition"
+                className="inline-flex items-center bg-[var(--primary,#f97316)] text-white px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-medium shadow hover:opacity-95 transition"
                 style={{ background: "var(--primary)" }}
               >
                 Email Admin
@@ -294,3 +293,4 @@ export default function HsManagement() {
     </div>
   );
 }
+

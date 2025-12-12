@@ -1,47 +1,46 @@
 import React from "react";
 import { BookOpen, FlaskConical, NotebookPen, BrainCircuit } from "lucide-react";
-import library from "../assets/class3.avif";
-import scienceLab from "../assets/lab.avif";
-import classroom from "../assets/class.avif";
-import computers from "../assets/computer.avif";
-import teacher from "../assets/father.avif";
-
+import library from "../assets/class4.avif";
+import scienceLab from "../assets/lab2.avif";
+import classroom from "../assets/class2.avif";
+import computers from "../assets/computer2.avif";
+import teacher from "../assets/father2.avif";
 
 const themeColors = {
-  primary: "#38695aff", 
-  primarySoft: "rgba(5,150,105,0.08)", 
-  primaryShade: "#047857",
+  primary: "#2563eb", 
+  primarySoft: "rgba(37,99,235,0.12)", 
+  primaryShade: "#1e40af",
   neutralText: "#374151",
 };
 
 const academicsState = {
-  title: "HSLC Academics",
-  tagline: "A strong academic foundation built on discipline, curiosity, and guided learning.",
+  title: "HR Academics",
+  tagline: "Rigorous academic preparation for higher secondary board examinations and competitive tests.",
   image: classroom,
   description:
-    "Our academic programme is structured to help students excel in board examinations while also nurturing analytical thinking, creativity, and problem-solving.",
+    "Our HR academic programme focuses on board examination preparation, competitive test readiness, and building strong foundations for higher education.",
 };
 
 const curriculumHighlights = [
   {
-    icon: <BookOpen className="w-8 h-8 text-[var(--primary,#059669)]" />,
-    title: "Structured Curriculum",
+    icon: <BookOpen className="w-8 h-8 text-[var(--primary,#2563eb)]" />,
+    title: "Board-Aligned Curriculum",
     description:
-      "Aligned with SEBA board standards, ensuring clarity, progression, and mastery of core concepts.",
+      "Structured curriculum aligned with AHSEC board standards, ensuring comprehensive coverage of all subjects.",
     image: library,
   },
   {
-    icon: <FlaskConical className="w-8 h-8 text-[var(--primary,#059669)]" />,
-    title: "Science & Practical Learning",
+    icon: <FlaskConical className="w-8 h-8 text-[var(--primary,#2563eb)]" />,
+    title: "Advanced Science Labs",
     description:
-      "Hands-on experiments, lab sessions, demonstrations and inquiry-based science instruction.",
+      "State-of-the-art laboratories for Physics, Chemistry, and Biology with modern equipment and safety protocols.",
     image: scienceLab,
   },
   {
-    icon: <BrainCircuit className="w-8 h-8 text-[var(--primary,#059669)]" />,
-    title: "Competency-Based Learning",
+    icon: <BrainCircuit className="w-8 h-8 text-[var(--primary,#2563eb)]" />,
+    title: "Competitive Exam Prep",
     description:
-      "Focus on understanding, application, reasoning, and higher-order thinking instead of rote study.",
+      "Specialized coaching and resources for competitive examinations like NEET, JEE, and other entrance tests.",
     image: computers,
   },
 ];
@@ -49,39 +48,40 @@ const curriculumHighlights = [
 const subjects = [
   "English",
   "Mathematics",
-  "General Science",
-  "Social Science",
-  "MIL / Hindi",
+  "Physics",
+  "Chemistry",
+  "Biology",
   "Computer Science",
-  "EVS (Lower Classes)",
-  "Value Education",
+  "Economics",
+  "Business Studies",
+  "Accountancy",
 ];
 
 const labs = [
   {
     name: "Science Laboratory",
     image: scienceLab,
-    description: "Fully equipped Physics, Chemistry & Biology labs to support practical learning.",
+    description: "Fully equipped Physics, Chemistry & Biology labs with modern equipment for practical learning.",
   },
   {
     name: "Computer Laboratory",
     image: computers,
-    description: "Modern systems with structured digital literacy and coding foundations.",
+    description: "Advanced computer systems with programming environments and digital learning tools.",
   },
   {
-    name: "Library & Reading Room",
+    name: "Library & Study Hall",
     image: library,
-    description: "A quiet, resource-rich reading space with academic texts and reference materials.",
+    description: "Extensive collection of reference books, study materials, and quiet study spaces.",
   },
 ];
 
 const teachingMethods = [
-  "Activity-based learning",
-  "Demonstration and guided discovery",
-  "Concept-based explanations",
-  "Regular assessments and feedback",
-  "Smart classrooms with digital tools",
-  "Collaborative group learning",
+  "Concept-based teaching with real-world applications",
+  "Regular mock tests and board exam simulations",
+  "Individual attention and doubt-clearing sessions",
+  "Digital learning resources and smart classrooms",
+  "Career guidance and counseling",
+  "Group study and peer learning",
 ];
 
 const faculty = [
@@ -89,17 +89,17 @@ const faculty = [
     name: "Mrs. Anita Sharma",
     role: "Academic Coordinator",
     image: teacher,
-    bio: "Guiding teachers and students with 15+ years of academic leadership experience.",
+    bio: "Experienced educator with expertise in board examination preparation and student counseling.",
   },
   {
     name: "Mr. Ravi Kumar",
     role: "Science Faculty",
     image: teacher,
-    bio: "Specialist in integrated science teaching with a passion for hands-on demonstrations.",
+    bio: "Specialist in Physics and Chemistry with a focus on competitive exam preparation.",
   },
 ];
 
-export default function HsAcademics() {
+export default function HrAcademics() {
   return (
     <div
       className="text-gray-900"
@@ -163,7 +163,7 @@ export default function HsAcademics() {
               {curriculumHighlights.map((item) => (
                 <article key={item.title} className="bg-white rounded-2xl shadow-sm overflow-hidden">
                   <div className="relative aspect-video">
-                    <img src={item.image} alt={item.title} className="object-cover w-full h-full" />
+                    <img src={item.image} alt={item.title} className="object-cover w-full h-full" loading="lazy" decoding="async" />
                     <div className="absolute left-4 bottom-4 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow">
                       {item.icon}
                     </div>
@@ -210,7 +210,7 @@ export default function HsAcademics() {
               {labs.map((lab) => (
                 <div key={lab.name} className="rounded-2xl bg-white shadow-sm overflow-hidden">
                   <div className="aspect-video">
-                    <img src={lab.image} alt={lab.name} className="object-cover w-full h-full" />
+                    <img src={lab.image} alt={lab.name} className="object-cover w-full h-full" loading="lazy" decoding="async" />
                   </div>
                   <div className="p-4 md:p-6">
                     <h3 className="font-semibold text-md md:text-lg">{lab.name}</h3>
@@ -232,7 +232,7 @@ export default function HsAcademics() {
             <ul className="space-y-2 md:space-y-3">
               {teachingMethods.map((method, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <NotebookPen className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#059669)] mt-1 flex-shrink-0" />
+                  <NotebookPen className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#2563eb)] mt-1 flex-shrink-0" />
                   <p className="text-xs md:text-sm text-gray-700">{method}</p>
                 </li>
               ))}
@@ -251,7 +251,7 @@ export default function HsAcademics() {
               {faculty.map((f) => (
                 <div key={f.name} className="rounded-2xl bg-white p-4 md:p-6 shadow-sm flex gap-4 items-start">
                   <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden flex-shrink-0">
-                    <img src={f.image} alt={f.name} className="object-cover w-full h-full" />
+                    <img src={f.image} alt={f.name} className="object-cover w-full h-full" loading="lazy" decoding="async" />
                   </div>
                   <div>
                     <div className="text-sm md:text-lg font-semibold">{f.name}</div>
@@ -267,3 +267,4 @@ export default function HsAcademics() {
     </div>
   );
 }
+

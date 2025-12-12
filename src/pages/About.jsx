@@ -1,7 +1,7 @@
-import SlideIn from "../effects/SlideIn";
 import HsAbout from "../HSLC/HsAbout";
+import HrAbout from "../HR/HrAbout";
+import JbAbout from "../JB/JbAbout";
 import { useOutletContext } from "react-router-dom";
-
 
 const About = () => {
   const {state} = useOutletContext()
@@ -9,8 +9,13 @@ const About = () => {
     <div>
       {state === 'hs' ? (
           <HsAbout/>
-      ) : ""}
-
+      ) : state === 'hr' ? (
+          <HrAbout/>
+      ) : state === 'jb' ? (
+          <JbAbout/>
+      ) : (
+          <HsAbout/>
+      )}
     </div>
   )
 }

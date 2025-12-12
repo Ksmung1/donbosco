@@ -1,105 +1,104 @@
 import React from "react";
 import { BookOpen, FlaskConical, NotebookPen, BrainCircuit } from "lucide-react";
-import library from "../assets/class3.avif";
-import scienceLab from "../assets/lab.avif";
-import classroom from "../assets/class.avif";
-import computers from "../assets/computer.avif";
-import teacher from "../assets/father.avif";
-
+import library from "../assets/class6.avif";
+import scienceLab from "../assets/lab3.avif";
+import classroom from "../assets/class5.avif";
+import computers from "../assets/computer3.avif";
+import teacher from "../assets/father3.avif";
 
 const themeColors = {
-  primary: "#38695aff", 
-  primarySoft: "rgba(5,150,105,0.08)", 
-  primaryShade: "#047857",
+  primary: "#f97316", 
+  primarySoft: "rgba(249,115,22,0.12)", 
+  primaryShade: "#ea580c",
   neutralText: "#374151",
 };
 
 const academicsState = {
-  title: "HSLC Academics",
-  tagline: "A strong academic foundation built on discipline, curiosity, and guided learning.",
+  title: "JB Academics",
+  tagline: "Play-based learning and foundational skills development for young children.",
   image: classroom,
   description:
-    "Our academic programme is structured to help students excel in board examinations while also nurturing analytical thinking, creativity, and problem-solving.",
+    "Our JB academic programme focuses on learning through play, exploration, and hands-on activities that build foundational skills in a joyful environment.",
 };
 
 const curriculumHighlights = [
   {
-    icon: <BookOpen className="w-8 h-8 text-[var(--primary,#059669)]" />,
-    title: "Structured Curriculum",
+    icon: <BookOpen className="w-8 h-8 text-[var(--primary,#f97316)]" />,
+    title: "Play-Based Curriculum",
     description:
-      "Aligned with SEBA board standards, ensuring clarity, progression, and mastery of core concepts.",
+      "Learning through play, stories, songs, and interactive activities that make education fun and engaging.",
     image: library,
   },
   {
-    icon: <FlaskConical className="w-8 h-8 text-[var(--primary,#059669)]" />,
-    title: "Science & Practical Learning",
+    icon: <FlaskConical className="w-8 h-8 text-[var(--primary,#f97316)]" />,
+    title: "Creative Activities",
     description:
-      "Hands-on experiments, lab sessions, demonstrations and inquiry-based science instruction.",
+      "Art, craft, music, and movement activities that develop creativity, motor skills, and self-expression.",
     image: scienceLab,
   },
   {
-    icon: <BrainCircuit className="w-8 h-8 text-[var(--primary,#059669)]" />,
-    title: "Competency-Based Learning",
+    icon: <BrainCircuit className="w-8 h-8 text-[var(--primary,#f97316)]" />,
+    title: "Foundation Building",
     description:
-      "Focus on understanding, application, reasoning, and higher-order thinking instead of rote study.",
+      "Building strong foundations in language, numeracy, and social skills through age-appropriate activities.",
     image: computers,
   },
 ];
 
 const subjects = [
-  "English",
-  "Mathematics",
-  "General Science",
-  "Social Science",
-  "MIL / Hindi",
-  "Computer Science",
-  "EVS (Lower Classes)",
+  "Language Development",
+  "Numeracy Skills",
+  "Environmental Studies",
+  "Art & Craft",
+  "Music & Movement",
+  "Physical Education",
+  "Storytelling",
   "Value Education",
 ];
 
 const labs = [
   {
-    name: "Science Laboratory",
+    name: "Activity Room",
     image: scienceLab,
-    description: "Fully equipped Physics, Chemistry & Biology labs to support practical learning.",
+    description: "Dedicated space for hands-on activities, experiments, and creative projects.",
   },
   {
-    name: "Computer Laboratory",
+    name: "Play Area",
     image: computers,
-    description: "Modern systems with structured digital literacy and coding foundations.",
+    description: "Safe and engaging play areas with age-appropriate toys and equipment.",
   },
   {
-    name: "Library & Reading Room",
+    name: "Library Corner",
     image: library,
-    description: "A quiet, resource-rich reading space with academic texts and reference materials.",
+    description: "Cozy reading corner with picture books, storybooks, and interactive learning materials.",
   },
 ];
 
 const teachingMethods = [
-  "Activity-based learning",
-  "Demonstration and guided discovery",
-  "Concept-based explanations",
-  "Regular assessments and feedback",
-  "Smart classrooms with digital tools",
-  "Collaborative group learning",
+  "Play-based learning activities",
+  "Storytelling and role-play",
+  "Hands-on experiments and exploration",
+  "Music, dance, and movement",
+  "Art and craft projects",
+  "Group activities and peer interaction",
 ];
 
 const faculty = [
   {
     name: "Mrs. Anita Sharma",
-    role: "Academic Coordinator",
+    role: "Early Childhood Coordinator",
     image: teacher,
-    bio: "Guiding teachers and students with 15+ years of academic leadership experience.",
+    bio: "Experienced educator specializing in early childhood development and play-based learning.",
   },
   {
     name: "Mr. Ravi Kumar",
-    role: "Science Faculty",
+    role: "Activity Coordinator",
     image: teacher,
-    bio: "Specialist in integrated science teaching with a passion for hands-on demonstrations.",
+    bio: "Passionate about creative activities and holistic development of young children.",
   },
 ];
 
-export default function HsAcademics() {
+export default function JbAcademics() {
   return (
     <div
       className="text-gray-900"
@@ -163,7 +162,7 @@ export default function HsAcademics() {
               {curriculumHighlights.map((item) => (
                 <article key={item.title} className="bg-white rounded-2xl shadow-sm overflow-hidden">
                   <div className="relative aspect-video">
-                    <img src={item.image} alt={item.title} className="object-cover w-full h-full" />
+                    <img src={item.image} alt={item.title} className="object-cover w-full h-full" loading="lazy" decoding="async" />
                     <div className="absolute left-4 bottom-4 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow">
                       {item.icon}
                     </div>
@@ -183,7 +182,7 @@ export default function HsAcademics() {
       <section className="bg-white py-5 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div>
-            <h2 className="text-2xl md:text-5xl font-extrabold mb-6 text-center md:text-left">Subjects Offered</h2>
+            <h2 className="text-2xl md:text-5xl font-extrabold mb-6 text-center md:text-left">Learning Areas</h2>
 
             <div className="flex flex-wrap gap-2 md:gap-3">
               {subjects.map((subj) => (
@@ -210,7 +209,7 @@ export default function HsAcademics() {
               {labs.map((lab) => (
                 <div key={lab.name} className="rounded-2xl bg-white shadow-sm overflow-hidden">
                   <div className="aspect-video">
-                    <img src={lab.image} alt={lab.name} className="object-cover w-full h-full" />
+                    <img src={lab.image} alt={lab.name} className="object-cover w-full h-full" loading="lazy" decoding="async" />
                   </div>
                   <div className="p-4 md:p-6">
                     <h3 className="font-semibold text-md md:text-lg">{lab.name}</h3>
@@ -232,7 +231,7 @@ export default function HsAcademics() {
             <ul className="space-y-2 md:space-y-3">
               {teachingMethods.map((method, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <NotebookPen className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#059669)] mt-1 flex-shrink-0" />
+                  <NotebookPen className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#f97316)] mt-1 flex-shrink-0" />
                   <p className="text-xs md:text-sm text-gray-700">{method}</p>
                 </li>
               ))}
@@ -251,7 +250,7 @@ export default function HsAcademics() {
               {faculty.map((f) => (
                 <div key={f.name} className="rounded-2xl bg-white p-4 md:p-6 shadow-sm flex gap-4 items-start">
                   <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden flex-shrink-0">
-                    <img src={f.image} alt={f.name} className="object-cover w-full h-full" />
+                    <img src={f.image} alt={f.name} className="object-cover w-full h-full" loading="lazy" decoding="async" />
                   </div>
                   <div>
                     <div className="text-sm md:text-lg font-semibold">{f.name}</div>
@@ -267,3 +266,4 @@ export default function HsAcademics() {
     </div>
   );
 }
+
