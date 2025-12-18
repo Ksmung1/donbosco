@@ -81,7 +81,7 @@ export default function HsManagement() {
     >
       {/* HERO */}
       <section className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-center">
               <div>
                 <p
@@ -127,14 +127,14 @@ export default function HsManagement() {
       </section>
 
       {/* BOARD / MANAGEMENT */}
-      <section className="bg-gray-50 py-5 md:py-16">
+      <section className="bg-gray-50 py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-5xl font-extrabold mb-6 text-center md:text-left">Leadership Team</h2>
 
             <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {boardMembers.map((m) => (
                 <div key={m.name} className="rounded-2xl bg-white p-4 md:p-6 shadow-sm flex gap-4 items-start">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden flex-shrink-0">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shrink-0">
                     <img src={m.image} alt={m.name} className="object-cover w-full h-full" />
                   </div>
 
@@ -150,7 +150,7 @@ export default function HsManagement() {
       </section>
 
       {/* COMMITTEES & POLICIES */}
-      <section className="bg-white py-5 md:py-16">
+      <section className="bg-white py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12">
               <div>
@@ -181,7 +181,7 @@ export default function HsManagement() {
       </section>
 
       {/* ADMIN OFFICE / CONTACT */}
-      <section className="bg-gray-50 py-5 md:py-16">
+      <section className="bg-gray-50 py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-start">
               <div className="md:col-span-2">
@@ -192,9 +192,9 @@ export default function HsManagement() {
                 </p>
 
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-                  <div className="p-3 md:p-4 bg-white rounded-2xl shadow-sm">
+                    <div className="p-3 md:p-4 bg-white rounded-2xl shadow-sm">
                     <div className="flex items-center gap-3">
-                      <Phone className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#059669)] flex-shrink-0" />
+                      <Phone className="w-4 h-4 md:w-5 md:h-5 text-(--primary,#059669) shrink-0" />
                       <div>
                         <div className="text-xs md:text-sm font-medium">Phone</div>
                         <div className="text-xs md:text-sm text-gray-600">{contact.phone}</div>
@@ -204,7 +204,7 @@ export default function HsManagement() {
 
                   <div className="p-3 md:p-4 bg-white rounded-2xl shadow-sm">
                     <div className="flex items-center gap-3">
-                      <FileText className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#059669)] flex-shrink-0" />
+                      <FileText className="w-4 h-4 md:w-5 md:h-5 text-(--primary,#059669) shrink-0" />
                       <div>
                         <div className="text-xs md:text-sm font-medium">Email</div>
                         <div className="text-xs md:text-sm text-gray-600">{contact.email}</div>
@@ -214,7 +214,7 @@ export default function HsManagement() {
 
                   <div className="p-3 md:p-4 bg-white rounded-2xl shadow-sm">
                     <div className="flex items-center gap-3">
-                      <Calendar className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#059669)] flex-shrink-0" />
+                      <Calendar className="w-4 h-4 md:w-5 md:h-5 text-(--primary,#059669) shrink-0" />
                       <div>
                         <div className="text-xs md:text-sm font-medium">Office Hours</div>
                         <div className="text-xs md:text-sm text-gray-600">{contact.hours}</div>
@@ -224,7 +224,7 @@ export default function HsManagement() {
 
                   <div className="p-3 md:p-4 bg-white rounded-2xl shadow-sm">
                     <div className="flex items-center gap-3">
-                      <UserCheck className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#059669)] flex-shrink-0" />
+                      <UserCheck className="w-4 h-4 md:w-5 md:h-5 text-(--primary,#059669) shrink-0" />
                       <div>
                         <div className="text-xs md:text-sm font-medium">Office</div>
                         <div className="text-xs md:text-sm text-gray-600">{contact.office}</div>
@@ -244,7 +244,7 @@ export default function HsManagement() {
       </section>
 
       {/* MEETINGS / MINUTES */}
-      <section className="bg-white py-5 md:py-16">
+      <section className="bg-white py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-5xl font-extrabold mb-6 text-center md:text-left">Meetings & Minutes</h2>
 
@@ -268,7 +268,7 @@ export default function HsManagement() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gray-50 py-5 md:py-12">
+      <section className="bg-gray-50 py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-5xl font-extrabold">Want to meet the team?</h2>
             <p className="mt-3 text-xs md:text-md text-gray-600">Request a meeting with the admin office or visit during office hours.</p>
@@ -276,7 +276,7 @@ export default function HsManagement() {
             <div className="mt-6 flex items-center justify-center gap-3 md:gap-4">
               <a
                 href={`mailto:${contact.email}`}
-                className="inline-flex items-center bg-[var(--primary,#059669)] text-white px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-medium shadow hover:opacity-95 transition"
+                className="inline-flex items-center bg-(--primary,#059669) text-white px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-medium shadow hover:opacity-95 transition"
                 style={{ background: "var(--primary)" }}
               >
                 Email Admin

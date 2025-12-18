@@ -98,7 +98,7 @@ const HsHome = () => {
 
   return (
     <div className="">
-      <section className="py-5 md:py-24 bg-white">
+      <section className="py-5 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-2xl md:text-5xl font-extrabold">What We <span className="text-[var(--primary,#059669)]">Offer</span></h2>
@@ -129,7 +129,8 @@ const HsHome = () => {
         </div>
       </section>
 
-      <section className="md:py-24 py-5 bg-gray-50">
+      
+      <section className="md:py-20 py-5 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 grid-cols-1 md:grid-cols-2 items-center">
           <div>
             <h1 className=" text-2xl md:text-5xl font-extrabold text-center md:text-left leading-tight">
@@ -173,7 +174,8 @@ const HsHome = () => {
         </div>
       </section>
 
-      <section className="md:py-24 py-10 bg-white">
+
+      <section className="md:py-20 py-10 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-3 gap-2 md:gap-6 text-center">
             <div>
@@ -192,7 +194,7 @@ const HsHome = () => {
         </div>
       </section>
 
-      <section className="md:py-24 py-5 bg-gray-50">
+      <section className="md:py-20 py-5 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center flex-col justify-between mb-6">
               <h2 className="text-2xl md:text-5xl font-extrabold">Our <span className="text-[var(--primary,#059669)]">Teachers</span></h2>
@@ -238,7 +240,7 @@ const HsHome = () => {
         {/* Header */}
         <div className="flex flex-col sm:items-center sm:justify-between gap-4 mb-6">
           <div>
-            <h2 className="text-2xl md:text-5xl font-extrabold text-gray-900 text-center ">Board <span className="text-[var(--primary,#059669)]">Toppers</span></h2>
+            <h2 className="text-2xl md:text-5xl font-extrabold text-gray-900 text-center ">HSLC Board <span className="text-[var(--primary,#059669)]">Toppers</span></h2>
             <p className="mt-1 text-center text-xs md:mt-3 md:text-sm text-gray-500">All rank-1 achievers — celebrated by year</p>
           </div>
 

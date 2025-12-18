@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import image from "../assets/school.avif";
+import fatherImg from "../assets/father3.avif";
 import HsHome from "../HSLC/HsHome";
 import { useOutletContext } from "react-router-dom";
 import HrHome from "../HR/HrHome";
@@ -99,7 +100,7 @@ const Home = () => {
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-5xl  font-extrabold">School <span className="text-[var(--primary,#059669)]">Information</span></h2>
+            <h2 className="text-2xl md:text-5xl  font-extrabold">School <span className="text-(--primary,#059669)">Information</span></h2>
             <p className="mt-2 text-xs md:text-md text-gray-600 max-w-2xl mx-auto">
               High-quality programs, a supportive community, and a focus on student success.
             </p>
@@ -160,7 +161,7 @@ const Home = () => {
                             <p>{info.content}</p>
                             <button
                               onClick={() => setOpenDetailsId(null)}
-                              className="mt-2 text-sm underline text-[var(--primary)]"
+                              className="mt-2 text-sm underline text-(--primary)"
                               style={{ transition: "color 400ms ease" }}
                             >
                               Show less
@@ -204,6 +205,47 @@ const Home = () => {
           ) : (
             <HsHome />
           )}
+        </div>
+
+
+      </section>
+
+      {/* Fathers Message */}
+      <section className="bg-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+
+            <h2 className="mt-3 text-2xl md:text-5xl text-left font-extrabold">
+              Principal's <span className="text-(--primary,#059669)">Message</span>
+            </h2>
+          </div>
+
+          <div className="flex md:flex-row flex-col gap-10 items-center">
+            <div className="relative">
+              <div className="relative w-full md:w-120 overflow-hidden rounded-2xl shadow-lg border border-gray-100 bg-gray-50">
+                <img
+                  src={fatherImg}
+                  alt="Father's portrait"
+                  className="w-full h-full object-cover "
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {/* <p className="text-base leading-relaxed text-gray-800">Dear Friends</p> */}
+              <blockquote className="text-lg md:text-xl leading-relaxed text-gray-800">
+                “Education is not just the transfer of knowledge—it is an invitation to grow in character, kindness, and purpose.
+                At Don Bosco, we walk with every child so they discover their gifts and serve others with joy.”
+              </blockquote>
+              <div className="h-px bg-linear-to-r from-(--primary,#059669) via-(--primary-soft,rgba(5,150,105,0.1)) to-transparent" />
+              <div>
+                <p className="text-base md:text-lg font-semibold text-gray-900">Rev. Fr. Stephen Baite</p>
+                <p className="text-sm text-gray-600">Principal, Don Bosco</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

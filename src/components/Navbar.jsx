@@ -1,11 +1,25 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
+import logo from "../assets/logo.png";
 
 const navItems = [
   { path: "/", label: "Home" },
   { path: "/about", label: "About Us" },
+  { path: "/facilities", label: "Facilities", dropdown: [
+    { path: "/facilities/lab-physics", label: "Physics Lab" },
+    { path: "/facilities/lab-chemistry", label: "Chemistry Lab" },
+    { path: "/facilities/lab-bio", label: "Biology Lab" },
+    { path: "/facilities/playground", label: "Play Ground" },
+    { path: "/facilities/library", label: "Library" },
+    { path: "/facilities/computers", label: "Computer Lab" },
+    { path: "/facilities/auditorium", label: "Auditorium" },
+    { path: "/facilities/staffroom", label: "Staff Room" },
+    { path: "/facilities/scenery", label: "Infrastructure" },
+
+  ]},
   { path: "/academics", label: "Academics" },
+  { path: "/admissions", label: "Admissions" },
   { path: "/management", label: "Management" },
   { path: "/gallery", label: "Gallery" },
   { path: "/contact", label: "Contact" },
@@ -48,23 +62,33 @@ export default function Navbar() {
         className="fixed top-0 left-0 right-0 z-50 w-full"
       >
         <nav
-          className="w-full border-b border-white/20 backdrop-blur-md bg-white shadow-lg"
+          className="w-full border-b border-white/20 border-b border-gray-200 backdrop-blur-md bg-white shadow-lg"
           aria-label="Primary navigation"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-14">
+            <div className="flex  justify-between ">
               {/* Logo */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1 py-1 md:gap-3">
                 <Link to="/" className="flex items-center gap-3">
                   <div
-                    className="w-9 h-9 rounded-full bg-[linear-gradient(135deg,#ffffff9f,#00000011)] flex items-center justify-center text-sm font-bold text-[var(--primary,#059669)] shadow-sm"
+                    className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[linear-gradient(135deg,#ffffff9f,#00000011)] flex items-center justify-center text-sm font-bold text-[var(--primary,#059669)] shadow-sm"
                     aria-hidden
                   >
-                    DB
+                  <img src={logo} alt="logo" />
                   </div>
-                  <span className="hidden sm:inline-block font-semibold text-gray-800">
+                  <div className="flex flex-col font-serif">
+                  <span className="inline-block text-base md:text-xl  text-gray-800">
                     Don Bosco
                   </span>
+                  <span className="inline-block text-xs md:text-md text-gray-800">
+                    Higher Secondary
+                  </span>
+                  <span className="inline-block text-xs md:text-md italic text-gray-700">
+                    Salem Veng / Churachandpur
+                  </span>
+
+                  </div>
+
                 </Link>
               </div>
 
@@ -77,7 +101,7 @@ export default function Navbar() {
                         type="button"
                         onClick={() => toggleDropdown(item.path)}
                         aria-expanded={openDropdown === item.path}
-                        className={`flex items-center gap-1 text-sm font-medium pb-1 transition-colors ${
+                        className={`flex items-center gap-1 font-medium pb-1 transition-colors ${
                           isActive(item.path)
                             ? "text-gray-900 border-b-2 border-[var(--primary,#059669)]"
                             : "text-gray-800 hover:text-gray-900"
@@ -116,7 +140,7 @@ export default function Navbar() {
                     <Link
                       key={item.path}
                       to={item.path}
-                      className={`text-sm font-medium transition-colors ${
+                      className={`text-sm md:text-md font-medium transition-colors ${
                         isActive(item.path)
                           ? "text-gray-900 border-b-2 border-[var(--primary,#059669)] pb-1"
                           : "text-gray-800 hover:text-gray-900"

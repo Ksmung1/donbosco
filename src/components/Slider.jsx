@@ -7,6 +7,7 @@ import ground from "../assets/ground2.avif";
 import park from "../assets/park3.avif"
 import lab from "../assets/lab.avif"
 import students from "../assets/students.avif"
+import video from "../assets/compressed.mp4"
 
 /**
  * Group slides by "state" so each state has its own set of slides.
@@ -18,6 +19,7 @@ const slidesByState = {
       key: "building-hs",
       label: "School",
       image: building,
+      video: video,
       title: "Main Campus Building",
       description:
         "The main academic block with modern architecture, spacious corridors, and well-ventilated classrooms designed for focused learning.",
@@ -170,11 +172,16 @@ const Slider = ({ state, states, setState }) => {
                   >
                     <div className="relative h-[740px]  overflow-hidden">
                       {/* IMAGE */}
-                      <img
+                      {slide.video && 
+                      <video src={slide.video} autoPlay muted loop className="h-full w-full object-cover  object-bottom transform transition-transform duration-[1000ms] ease-out ${imgScale}"></video>
+                      } else {
+                        <img
                         src={slide.image}
                         alt={slide.label}
                         className={`h-full w-full object-cover  object-bottom transform transition-transform duration-[1000ms] ease-out ${imgScale}`}
                       />
+                      }
+
 
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
 

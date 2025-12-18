@@ -1,10 +1,10 @@
-import React from "react";
-import { BookOpen, FlaskConical, NotebookPen, BrainCircuit } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { ChevronDown, ChevronLeft, ChevronRight, NotebookPen } from "lucide-react";
 import library from "../assets/class3.avif";
-import scienceLab from "../assets/lab.avif";
 import classroom from "../assets/class.avif";
 import computers from "../assets/computer.avif";
 import teacher from "../assets/father.avif";
+import galleryData from "../data/gallery";
 
 
 const themeColors = {
@@ -22,87 +22,137 @@ const academicsState = {
     "Our academic programme is structured to help students excel in board examinations while also nurturing analytical thinking, creativity, and problem-solving.",
 };
 
-const curriculumHighlights = [
+const findImageSrc = (file) => galleryData.find((g) => g.file === file)?.src;
+const resolveImages = (files = []) => files.map(findImageSrc).filter(Boolean);
+
+const subjectImageMap = {
+  Physics: ["lab18.avif", "lab19.avif", "lab20.avif", "lab21.avif", "lab22.avif", "lab23.avif"],
+  Chemistry: ["lab2.avif", "lab3.avif", "lab4.avif", "lab10.avif", "lab11.avif"],
+  Biology: ["lab12.avif", "lab13.avif", "lab14.avif", "lab15.avif"],
+  Mathematics: ["class8.avif", "class9.avif", "class10.avif", "class11.avif"],
+  "Computer Science": ["computer.avif", "computer2.avif", "computer3.avif", "computer4.avif"],
+  History: ["hall.avif", "hall2.avif", "hall3.avif"],
+  "Political Science": ["hall4.avif", "hall5.avif", "hall6.avif"],
+  Geography: ["ground.avif", "ground2.avif", "ground3.avif", "ground4.avif"],
+  Economics: ["class6.avif", "class7.avif", "class8.avif"],
+  "English Literature": ["class3.avif", "class4.avif", "class5.avif"],
+  Accountancy: ["lab2.avif", "lab3.avif", "lab4.avif", "computer.avif"],
+  "Business Studies": ["class9.avif", "class10.avif", "class11.avif"],
+  Informatics: ["computer2.avif", "computer3.avif", "computer4.avif"],
+};
+
+const academicStreams = [
   {
-    icon: <BookOpen className="w-8 h-8 text-[var(--primary,#059669)]" />,
-    title: "Structured Curriculum",
-    description:
-      "Aligned with SEBA board standards, ensuring clarity, progression, and mastery of core concepts.",
-    image: library,
+    id: "science",
+    name: "Science Stream",
+    summary: "Build a strong base for medical, engineering, and research pathways.",
+    accentBorder: "border-emerald-500",
+    accentTone: "text-emerald-700",
+    chipTone: "bg-emerald-50 text-emerald-700",
+    slides: [],
+    subjects: [
+      { name: "Physics", teachers: [{ name: "Mr. Ravi Kumar", image: teacher }], images: resolveImages(subjectImageMap.Physics) },
+      { name: "Chemistry", teachers: [{ name: "Mrs. Anita Sharma", image: teacher }], images: resolveImages(subjectImageMap.Chemistry) },
+      { name: "Biology", teachers: [{ name: "Mr. Ravi Kumar", image: teacher }], images: resolveImages(subjectImageMap.Biology) },
+      { name: "Mathematics", teachers: [{ name: "Mrs. Anita Sharma", image: teacher }], images: resolveImages(subjectImageMap.Mathematics) },
+      { name: "Computer Science", teachers: [{ name: "Mr. Ravi Kumar", image: teacher }], images: resolveImages(subjectImageMap["Computer Science"]) },
+    ],
   },
   {
-    icon: <FlaskConical className="w-8 h-8 text-[var(--primary,#059669)]" />,
-    title: "Science & Practical Learning",
-    description:
-      "Hands-on experiments, lab sessions, demonstrations and inquiry-based science instruction.",
-    image: scienceLab,
+    id: "arts",
+    name: "Arts",
+    summary: "Grow critical thinking, communication, and civic awareness skills.",
+    accentBorder: "border-indigo-500",
+    accentTone: "text-indigo-700",
+    chipTone: "bg-indigo-50 text-indigo-700",
+    slides: [],
+    subjects: [
+      { name: "History", teachers: [{ name: "Ms. Priya Sen", image: teacher }], images: resolveImages(subjectImageMap.History) },
+      { name: "Political Science", teachers: [{ name: "Mr. Arjun Das", image: teacher }], images: resolveImages(subjectImageMap["Political Science"]) },
+      { name: "Geography", teachers: [{ name: "Ms. Priya Sen", image: teacher }], images: resolveImages(subjectImageMap.Geography) },
+      { name: "Economics", teachers: [{ name: "Mr. Arjun Das", image: teacher }], images: resolveImages(subjectImageMap.Economics) },
+      { name: "English Literature", teachers: [{ name: "Ms. Priya Sen", image: teacher }], images: resolveImages(subjectImageMap["English Literature"]) },
+    ],
   },
   {
-    icon: <BrainCircuit className="w-8 h-8 text-[var(--primary,#059669)]" />,
-    title: "Competency-Based Learning",
-    description:
-      "Focus on understanding, application, reasoning, and higher-order thinking instead of rote study.",
-    image: computers,
+    id: "commerce",
+    name: "Commerce ",
+    summary: "Understand finance, trade, and business management fundamentals.",
+    accentBorder: "border-amber-500",
+    accentTone: "text-amber-700",
+    chipTone: "bg-amber-50 text-amber-700",
+    slides: [],
+    subjects: [
+      { name: "Accountancy", teachers: [{ name: "Mr. Sanjay Kapoor", image: teacher }], images: resolveImages(subjectImageMap.Accountancy) },
+      { name: "Business Studies", teachers: [{ name: "Ms. Neha Rao", image: teacher }], images: resolveImages(subjectImageMap["Business Studies"]) },
+      { name: "Economics", teachers: [{ name: "Ms. Neha Rao", image: teacher }], images: resolveImages(subjectImageMap.Economics) },
+      { name: "Mathematics", teachers: [{ name: "Mr. Sanjay Kapoor", image: teacher }], images: resolveImages(subjectImageMap.Mathematics) },
+      { name: "Informatics Practices", teachers: [{ name: "Ms. Neha Rao", image: teacher }], images: resolveImages(subjectImageMap.Informatics) },
+    ],
   },
 ];
 
-const subjects = [
-  "English",
-  "Mathematics",
-  "General Science",
-  "Social Science",
-  "MIL / Hindi",
-  "Computer Science",
-  "EVS (Lower Classes)",
-  "Value Education",
-];
 
-const labs = [
-  {
-    name: "Science Laboratory",
-    image: scienceLab,
-    description: "Fully equipped Physics, Chemistry & Biology labs to support practical learning.",
-  },
-  {
-    name: "Computer Laboratory",
-    image: computers,
-    description: "Modern systems with structured digital literacy and coding foundations.",
-  },
-  {
-    name: "Library & Reading Room",
-    image: library,
-    description: "A quiet, resource-rich reading space with academic texts and reference materials.",
-  },
-];
 
-const teachingMethods = [
-  "Activity-based learning",
-  "Demonstration and guided discovery",
-  "Concept-based explanations",
-  "Regular assessments and feedback",
-  "Smart classrooms with digital tools",
-  "Collaborative group learning",
-];
-
-const faculty = [
-  {
-    name: "Mrs. Anita Sharma",
-    role: "Academic Coordinator",
-    image: teacher,
-    bio: "Guiding teachers and students with 15+ years of academic leadership experience.",
-  },
-  {
-    name: "Mr. Ravi Kumar",
-    role: "Science Faculty",
-    image: teacher,
-    bio: "Specialist in integrated science teaching with a passion for hands-on demonstrations.",
-  },
-];
+const fadeKeyframes = `
+@keyframes fadeSlide {
+  from { opacity: 0.35; transform: scale(1.01); }
+  to { opacity: 1; transform: scale(1); }
+}
+`;
 
 export default function HsAcademics() {
+  const [activeStreamId, setActiveStreamId] = useState(academicStreams[0].id);
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [selectedSubjectIndex, setSelectedSubjectIndex] = useState(0);
+
+  const activeStream = academicStreams.find((stream) => stream.id === activeStreamId) || academicStreams[0];
+  const activeSubjects = activeStream.subjects || [];
+  const selectedSubject = activeSubjects[selectedSubjectIndex] || activeSubjects[0];
+  const selectedSubjectName = selectedSubject?.name;
+
+  const subjectSlides =
+    (selectedSubject?.images || []).map((imgSrc) => ({
+      image: imgSrc,
+      label: `${selectedSubject?.name} Lab`,
+    })) || [];
+  const baseSlides = activeStream.slides || [];
+  const slidesToUse = subjectSlides.length > 0 ? subjectSlides : baseSlides;
+
+  const activeSlide = slidesToUse[slideIndex] || slidesToUse[0];
+  const activeImage = activeSlide?.image || slidesToUse[0]?.image || classroom;
+  const canSlide = slidesToUse.length > 1;
+  const selectedTeachers = selectedSubject?.teachers || [];
+
+  useEffect(() => {
+    setSlideIndex(0);
+    setSelectedSubjectIndex(0);
+  }, [activeStreamId]);
+
+  useEffect(() => {
+    if (slideIndex >= slidesToUse.length) {
+      setSlideIndex(0);
+    }
+  }, [slidesToUse.length, slideIndex]);
+
+  useEffect(() => {
+    setSlideIndex(0);
+  }, [selectedSubjectIndex]);
+
+  const changeSlide = (direction) => {
+    if (!canSlide) return;
+    setSlideIndex((prev) => {
+      const lastIndex = slidesToUse.length - 1;
+      if (direction === "next") {
+        return prev === lastIndex ? 0 : prev + 1;
+      }
+      return prev === 0 ? lastIndex : prev - 1;
+    });
+  };
+
   return (
     <div
-      className="text-gray-900"
+      className="text-gray-900 mt-2 md:mt-7 mb-60"
       style={{
         "--primary": themeColors.primary,
         "--primary-soft": themeColors.primarySoft,
@@ -110,160 +160,142 @@ export default function HsAcademics() {
         "--neutral-text": themeColors.neutralText,
       }}
     >
+      <style>{fadeKeyframes}</style>
       {/* HERO / INTRO */}
-      <section className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 md:py-24">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-center">
-              {/* Text */}
-              <div>
-                <p
-                  className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider"
-                  style={{
-                    background: "var(--primary-soft)",
-                    color: "var(--primary)",
-                  }}
-                >
-                  Academics
-                </p>
+      <section className="bg-white w-full">
+        <div className="relative pb-120 md:pb-70">
+          <div className="relative h-[360px] sm:h-[460px] md:h-[600px] overflow-hidden">
+            <div
+              key={activeSlide?.label || slideIndex}
+              className="h-full w-full relative"
+              style={{ animation: "fadeSlide 0.7s ease-in-out" }}
+            >
+              <img
+                src={activeImage}
+                alt={`${activeStream.name} visual`}
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/35 to-transparent" />
+            </div>
 
-                <h1 className="mt-4 text-2xl md:text-5xl font-extrabold tracking-tight">
-                  {academicsState.title}
-                </h1>
+            <div className="absolute inset-0 flex items-center justify-between px-3 sm:px-4 md:px-6">
+              <button
+                type="button"
+                onClick={() => changeSlide("prev")}
+                className="inline-flex h-7 w-7 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white/60 text-gray-800 shadow-md hover:bg-white transition"
+              >
+                <ChevronLeft/>
+              </button>
+              <button
+                type="button"
+                onClick={() => changeSlide("next")}
+                className="inline-flex h-7 w-7 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white/60 text-gray-800 shadow-md hover:bg-white transition"
+              >
+                <ChevronRight/>
+              </button>
+            </div>
 
-                <p className="mt-4 text-xs md:text-md" style={{ color: "var(--neutral-text)" }}>
-                  {academicsState.tagline}
-                </p>
-
-                <p className="mt-2 text-xs md:text-md text-gray-600 max-w-xl">{academicsState.description}</p>
-              </div>
-
-              {/* Image */}
-              <div className="rounded-3xl overflow-hidden shadow-md">
-                <div className="relative aspect-video bg-gray-100">
-                  <img
-                    src={academicsState.image}
-                    alt="Academics overview"
-                    className="object-cover w-full h-full"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              </div>
+            <div className="absolute max-w-7xl mx-auto inset-x-0 top-0 px-3 sm:px-6 md:px-10 pt-4 sm:pt-6 md:pt-12 flex flex-col gap-2 sm:gap-3 text-white">
+              <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">
+                {academicsState.title}
+              </p>
+              <div className="text-base md:text-lg font-semibold">{activeSlide?.label}</div>
             </div>
           </div>
-      </section>
 
-      {/* CURRICULUM HIGHLIGHTS */}
-      <section className="bg-gray-50 py-5 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div>
-            <h2 className="text-2xl md:text-5xl font-extrabold mb-6 text-center md:text-left">Curriculum Highlights</h2>
+          <div className="absolute left-1/2 md:w-2/3 w-[90%] -translate-x-1/2 bottom-0 md:bottom-4">
+            <div className="rounded-md bg-white  shadow-md border border-gray-100 overflow-hidden">
+              <div className="p-3 md:p-4 border-b border-gray-100">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4 w-full">
+                  {academicStreams.map((stream) => {
+                    const isActive = stream.id === activeStreamId;
+                    return (
+                      <button
+                        key={stream.id}
+                        type="button"
+                        onClick={() => setActiveStreamId(stream.id)}
+                        className={`w-full rounded-sm border px-4 py-3 text-left transition-all ${stream.accentBorder} ${
+                          isActive
+                            ? "bg-white shadow-md"
+                            : "bg-gray-50 hover:bg-white"
+                        }`}
+                      >
+                        <div className={`text-sm font-bold ${isActive ? stream.accentTone : "text-gray-700"}`}>
+                          {stream.name}
+                        </div>
+                        {/* <p className={`text-xs mt-1 leading-relaxed whitespace-normal ${isActive ? "text-gray-600" : "text-gray-500"}`}>
+                          {stream.summary}
+                        </p> */}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
-              {curriculumHighlights.map((item) => (
-                <article key={item.title} className="bg-white rounded-2xl shadow-sm overflow-hidden">
-                  <div className="relative aspect-video">
-                    <img src={item.image} alt={item.title} className="object-cover w-full h-full" />
-                    <div className="absolute left-4 bottom-4 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow">
-                      {item.icon}
+              <div className="p-4 pb-5 md:px-10 flex flex-col gap-4 md:gap-5">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div className="max-w-2xl">
+                    <p className="text-xs uppercase tracking-wide text-gray-500">Stream overview</p>
+                    <h3 className="text-lg font-semibold text-gray-900">{activeStream.name}</h3>
+                    <p className="text-sm text-gray-600 mt-1">{activeStream.summary}</p>
+                  </div>
+
+                </div>
+
+                <div>
+                  <p className="text-xs uppercase tracking-wide text-gray-500">Key subjects in this stream</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {activeSubjects.map((subject, idx) => {
+                      const isSelected = idx === selectedSubjectIndex;
+                      return (
+                        <button
+                          type="button"
+                          key={subject.name}
+                          onClick={() => setSelectedSubjectIndex(idx)}
+                          className={`rounded-sm px-3 py-2 text-xs font-semibold border transition ${
+                            isSelected
+                              ? "bg-gray-900 text-white border-gray-900"
+                              : "bg-gray-100 text-gray-800 border-gray-300 hover:bg-gray-200"
+                          }`}
+                        >
+                          {subject.name}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  {selectedTeachers.length > 0 && (
+                    <div className="mt-3">
+                      <p className="text-xs uppercase tracking-wide text-gray-500">
+                        {selectedTeachers.length > 1 ? "Teachers" : "Teacher"} for {selectedSubject?.name}
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {selectedTeachers.map((teacher, i) => (
+                          <div
+                            key={i}
+                            className="flex text-xs p-2  items-center gap-2 font-medium text-gray-700 shadow-sm"
+                          >
+                            <div className="w-10 h-10 flex items-center overflow-hidden rounded-full">
+                            <img className="aspect-square scale-[6] object-cover w-full h-full" src={teacher.image} alt={teacher.name} />
+                            </div>
+                            <div className="text-xs font-medium text-gray-700">
+                              {teacher.name}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-4 md:p-6">
-                    <h3 className="text-md md:text-xl font-semibold">{item.title}</h3>
-                    <p className="mt-3 text-xs md:text-sm text-gray-600">{item.description}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SUBJECTS OFFERED */}
-      <section className="bg-white py-5 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div>
-            <h2 className="text-2xl md:text-5xl font-extrabold mb-6 text-center md:text-left">Subjects Offered</h2>
-
-            <div className="flex flex-wrap gap-2 md:gap-3">
-              {subjects.map((subj) => (
-                <span
-                  key={subj}
-                  className="px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-medium"
-                  style={{ background: "#f3f4f6", color: "var(--neutral-text)" }}
-                >
-                  {subj}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FACILITIES / LABS */}
-      <section className="bg-gray-50 py-5 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div>
-            <h2 className="text-2xl md:text-5xl font-extrabold mb-6 md:mb-8 text-center md:text-left">Learning Facilities</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
-              {labs.map((lab) => (
-                <div key={lab.name} className="rounded-2xl bg-white shadow-sm overflow-hidden">
-                  <div className="aspect-video">
-                    <img src={lab.image} alt={lab.name} className="object-cover w-full h-full" />
-                  </div>
-                  <div className="p-4 md:p-6">
-                    <h3 className="font-semibold text-md md:text-lg">{lab.name}</h3>
-                    <p className="mt-2 text-xs md:text-sm text-gray-600">{lab.description}</p>
-                  </div>
+                  )}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* TEACHING METHODS */}
-      <section className="bg-white py-5 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div>
-            <h2 className="text-2xl md:text-5xl font-extrabold mb-6 text-center md:text-left">Teaching Approach</h2>
 
-            <ul className="space-y-2 md:space-y-3">
-              {teachingMethods.map((method, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <NotebookPen className="w-4 h-4 md:w-5 md:h-5 text-[var(--primary,#059669)] mt-1 flex-shrink-0" />
-                  <p className="text-xs md:text-sm text-gray-700">{method}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
 
-      {/* FACULTY */}
-      <section className="bg-gray-50 py-5 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div>
-            <h2 className="text-2xl md:text-5xl font-extrabold mb-6 text-center md:text-left">Faculty</h2>
 
-            <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-              {faculty.map((f) => (
-                <div key={f.name} className="rounded-2xl bg-white p-4 md:p-6 shadow-sm flex gap-4 items-start">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden flex-shrink-0">
-                    <img src={f.image} alt={f.name} className="object-cover w-full h-full" />
-                  </div>
-                  <div>
-                    <div className="text-sm md:text-lg font-semibold">{f.name}</div>
-                    <div className="text-xs md:text-sm text-gray-500">{f.role}</div>
-                    <p className="mt-2 text-xs md:text-sm text-gray-600">{f.bio}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 }
