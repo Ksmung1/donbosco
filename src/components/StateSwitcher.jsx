@@ -2,12 +2,12 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const StateSwitcher = ({ state, setState, states }) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   if (!states || !setState || !state) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center justify-center gap-3">
+    <div className="absolute bottom-6 right-6 z-10 flex flex-col items-center justify-center gap-3">
       {/* State Switcher Buttons */}
       <div
         className={`flex flex-col gap-3 relative mb-12 transition-all duration-300 ${
@@ -23,12 +23,11 @@ const StateSwitcher = ({ state, setState, states }) => {
               key={index}
               onClick={() => {
                 setState(slidePreview.state);
-                setIsVisible(false); // Close after selection
               }}
               className={`group relative h-16 w-24 overflow-hidden rounded-2xl border transition-all duration-300 shadow-lg ${
                 isActivePreview
-                  ? "border-green-500 shadow-green-200 scale-105 bg-white"
-                  : "border-gray-200 hover:border-green-300 hover:scale-105 opacity-90 bg-white"
+                  ? "border-blue-500 shadow-blue-200 scale-105 bg-white"
+                  : "border-gray-200 hover:border-blue-300 hover:scale-105 opacity-90 bg-white"
               }`}
               title={`Switch to ${slidePreview.label}`}
             >
@@ -42,28 +41,14 @@ const StateSwitcher = ({ state, setState, states }) => {
                 {slidePreview.label}
               </span>
               {isActivePreview && (
-                <div className="absolute top-1 right-1 w-2 h-2 rounded-full bg-green-500 shadow-sm" />
+                <div className="absolute top-1 right-1 w-2 h-2 rounded-full bg-blue-500 shadow-sm" />
               )}
             </button>
           );
         })}
       </div>
-
-      {/* Toggle Button */}
-      <button
-        onClick={() => setIsVisible(!isVisible)}
-        className="w-10 h-10 absolute bottom-0 right-0 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
-        title={isVisible ? "Hide switcher" : "Show switcher"}
-      >
-        {isVisible ? (
-          <ChevronRight className="w-5 h-5 text-gray-700" />
-        ) : (
-          <ChevronLeft className="w-5 h-5 text-gray-700" />
-        )}
-      </button>
     </div>
   );
 };
 
 export default StateSwitcher;
-

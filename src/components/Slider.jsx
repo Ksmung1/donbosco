@@ -1,24 +1,34 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import building from "../assets/school-copy.avif";
-import classroom from "../assets/class.avif";
-import ground from "../assets/ground2.avif";
-import park from "../assets/park3.avif"
-import lab from "../assets/lab.avif"
-import students from "../assets/students.avif"
-import video from "../assets/compressed.mp4"
+import gallery from "../data/gallery";
+import StateSwitcher from "./StateSwitcher";
+
+// Helper function to get image from gallery by filename
+const getImageFromGallery = (filename) => {
+  const image = gallery.find(
+    (item) =>
+      item.file?.toLowerCase() === filename.toLowerCase() ||
+      item.file?.toLowerCase().includes(filename.toLowerCase())
+  );
+  return image?.src || null;
+};
 
 /**
  * Group slides by "state" so each state has its own set of slides.
  * You can extend/fine-tune these arrays to have any number of slides per state.
  */
+// Note: video import needs to remain as direct import since it's not in gallery
+import video from "../assets/compressed.mp4";
+
 const slidesByState = {
   hs: [
     {
       key: "building-hs",
       label: "School",
-      image: building,
+      image:
+        getImageFromGallery("school-copy.avif") ||
+        getImageFromGallery("school"),
       video: video,
       title: "Main Campus Building",
       description:
@@ -27,7 +37,7 @@ const slidesByState = {
     {
       key: "classroom-hs",
       label: "Classroom",
-      image: classroom,
+      image: getImageFromGallery("class.avif") || getImageFromGallery("class"),
       title: "Smart Classroom",
       description:
         "Technology-enabled classrooms with interactive boards, flexible seating, and engaging teaching tools for an immersive learning experience.",
@@ -37,7 +47,7 @@ const slidesByState = {
     {
       key: "classroom-hr",
       label: "Classroom",
-      image: park,
+      image: getImageFromGallery("park3.avif") || getImageFromGallery("park"),
       title: "Smart Classroom",
       description:
         "Technology-enabled classrooms with interactive boards, flexible seating, and engaging teaching tools for an immersive learning experience.",
@@ -45,16 +55,19 @@ const slidesByState = {
     {
       key: "ground-hr",
       label: "Playground",
-      image: ground,
+      image:
+        getImageFromGallery("ground2.avif") || getImageFromGallery("ground"),
       title: "Outdoor Activity Area",
       description:
         "Open spaces for extracurricular activities and informal gatherings that complement academic life.",
     },
   ],
-    jb:[{
+  jb: [
+    {
       key: "playground-jb",
       label: "Playground",
-      image: students,
+      image:
+        getImageFromGallery("students.avif") || getImageFromGallery("students"),
       title: "Sports & Playground",
       description:
         "Expansive playground with football, basketball, athletics track, and dedicated zones for younger kids to play safely.",
@@ -62,13 +75,12 @@ const slidesByState = {
     {
       key: "building-jb",
       label: "School",
-      image: lab,
+      image: getImageFromGallery("lab.avif") || getImageFromGallery("lab"),
       title: "Main Campus Building",
       description:
         "The main academic block with modern architecture, spacious corridors, and well-ventilated classrooms designed for focused learning.",
     },
   ],
-
 };
 
 const schoolName = "Don Bosco School";
@@ -102,14 +114,15 @@ const Slider = ({ state, states, setState }) => {
       // State changed - trigger smooth transition
       setIsStateChanging(true);
       setCurrent(0); // Reset to first slide immediately
-      
-      if (stateChangeTimeoutRef.current) clearTimeout(stateChangeTimeoutRef.current);
-      
+
+      if (stateChangeTimeoutRef.current)
+        clearTimeout(stateChangeTimeoutRef.current);
+
       // Wait for fade-out, then fade in new slides
       stateChangeTimeoutRef.current = setTimeout(() => {
         setIsStateChanging(false);
       }, 600); // Half of 1500ms transition for smooth crossfade
-      
+
       prevStateRef.current = state;
     } else {
       // Initial load - no transition needed
@@ -118,7 +131,8 @@ const Slider = ({ state, states, setState }) => {
     }
 
     return () => {
-      if (stateChangeTimeoutRef.current) clearTimeout(stateChangeTimeoutRef.current);
+      if (stateChangeTimeoutRef.current)
+        clearTimeout(stateChangeTimeoutRef.current);
     };
   }, [state]);
 
@@ -147,95 +161,102 @@ const Slider = ({ state, states, setState }) => {
   }, [current]);
 
   return (
-    <div>
+    <div className="">
       {/* SLIDER */}
       <section className="w-full bg-blue-100 text-gray-900">
         <div className="relative mx-auto">
-            {/* MAIN SLIDE AREA */}
-            <div className="relative h-[740px]">
-              {currentSlides.map((slide, index) => {
-                const isActive = index === current && !isStateChanging;
-                // During state change, show first slide (index 0) with relative positioning to maintain height
-                const shouldMaintainHeight = isStateChanging && index === 0;
-                const imgScale = isActive && isZooming ? "scale-105" : "scale-100";
+          {/* MAIN SLIDE AREA */}
+          <div className="relative h-[620px]">
+            {currentSlides.map((slide, index) => {
+              const isActive = index === current && !isStateChanging;
+              // During state change, show first slide (index 0) with relative positioning to maintain height
+              const shouldMaintainHeight = isStateChanging && index === 0;
+              const imgScale =
+                isActive && isZooming ? "scale-105" : "scale-100";
 
-                return (
-                  <article
-                    key={slide.key}
-                    className={`transition-opacity duration-[1500ms] ease-out ${
-                      isActive 
-                        ? "opacity-100 relative z-10" 
-                        : shouldMaintainHeight
-                        ? "opacity-0 relative z-0 pointer-events-none"
-                        : "absolute inset-0 pointer-events-none opacity-0"
-                    }`}
-                  >
-                    <div className="relative h-[740px]  overflow-hidden">
-                      {/* IMAGE */}
-                      {slide.video && 
-                      <video src={slide.video} autoPlay muted loop className="h-full w-full object-cover  object-bottom transform transition-transform duration-[1000ms] ease-out ${imgScale}"></video>
-                      } else {
-                        <img
+              return (
+                <article
+                  key={slide.key}
+                  className={`transition-opacity duration-[1500ms] ease-out ${
+                    isActive
+                      ? "opacity-100 relative z-10"
+                      : shouldMaintainHeight
+                      ? "opacity-0 relative z-0 pointer-events-none"
+                      : "absolute inset-0 pointer-events-none opacity-0"
+                  }`}
+                >
+                  <div className="relative h-[620px]  overflow-hidden">
+                    {/* IMAGE */}
+                    {slide.video && (
+                      <video
+                        src={slide.video}
+                        autoPlay
+                        muted
+                        loop
+                        className="h-full w-full object-cover  object-top transform transition-transform duration-[1000ms] ease-out ${imgScale}"
+                      ></video>
+                    )}{" "}
+                    {
+                      <img
                         src={slide.image}
                         alt={slide.label}
                         className={`h-full w-full object-cover  object-bottom transform transition-transform duration-[1000ms] ease-out ${imgScale}`}
                       />
-                      }
+                    }
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
+                    <div
+                      className={`absolute w-full mx-auto  flex inset-0 flex-col justify-center px-6 md:px-10 lg:px-20  text-white transform transition-all duration-[1200ms] ease-out ${
+                        isActive
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-4"
+                      }`}
+                    >
+                      <header className="space-y-2 max-w-xl -bottom-30">
+                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
+                          {schoolName}
+                        </p>
+                        <h1 className="text-2xl font-bold md:text-3xl lg:text-4xl">
+                          {slide.title}
+                        </h1>
+                      </header>
 
-
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
-
-                      <div
-                        className={`absolute max-w-7xl mx-auto inset-0 flex flex-col justify-end px-6 pb-20 md:px-10 md:pb-24 text-white transform transition-all duration-[1200ms] ease-out ${
-                          isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                        }`}
-                      >
-                        <header className="space-y-2 max-w-xl">
-                          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
-                            {schoolName}
-                          </p>
-                          <h1 className="text-2xl font-bold md:text-3xl lg:text-4xl">
-                            {slide.title}
-                          </h1>
-                        </header>
-
-                        <div className="mt-4 space-y-2 text-sm max-w-xl">
-                          <h3 className="font-medium text-white/85">Overview</h3>
-                          <p className="text-white/80">{slide.description}</p>
-                        </div>
-
-                        <div className="mt-5">
-                          <Link
-                            to="/about"
-                            className="inline-flex items-center rounded-full bg-green-500/95 px-6 py-2 text-sm font-semibold text-white shadow-md shadow-green-500/30 hover:bg-green-600 transition"
-                          >
-                            Learn more
-                          </Link>
-                        </div>
+                      <div className="mt-4 space-y-2 text-sm max-w-xl">
+                        <h3 className="font-medium text-white/85">Overview</h3>
+                        <p className="text-white/80">{slide.description}</p>
                       </div>
 
-                      <div className="absolute inset-x-0 bottom-4 z-10 flex items-center justify-center gap-2">
-                        <button
-                          type="button"
-                          onClick={goPrev}
-                          className="flex items-center justify-center rounded-full bg-white/90 p-2 text-gray-800 shadow-sm hover:bg-gray-100 hover:scale-[1.1] cursor-pointer transition"
+                      <div className="mt-5">
+                        <Link
+                          to="/about"
+                          className="inline-flex items-center rounded-full bg-blue-500/95 px-6 py-2 text-sm font-semibold text-white shadow-md shadow-blue-500/30 hover:bg-blue-600 transition"
                         >
-                          <FaAngleLeft />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={goNext}
-                          className="flex items-center justify-center rounded-full bg-white/90 p-2 text-gray-800 shadow-sm hover:bg-gray-100 hover:scale-[1.1] cursor-pointer transition"
-                        >
-                          <FaAngleRight />
-                        </button>
+                          Learn more
+                        </Link>
                       </div>
                     </div>
-                  </article>
-                );
-              })}
-            </div>
+                    <div className="absolute inset-x-0 bottom-4 z-10 flex items-center justify-center gap-2">
+                      <button
+                        type="button"
+                        onClick={goPrev}
+                        className="flex items-center justify-center rounded-full bg-white/90 p-2 text-gray-800 shadow-sm hover:bg-gray-100 hover:scale-[1.1] cursor-pointer transition"
+                      >
+                        <FaAngleLeft />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={goNext}
+                        className="flex items-center justify-center rounded-full bg-white/90 p-2 text-gray-800 shadow-sm hover:bg-gray-100 hover:scale-[1.1] cursor-pointer transition"
+                      >
+                        <FaAngleRight />
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
+          <StateSwitcher state={state} setState={setState} states={states} />
+        </div>
       </section>
     </div>
   );

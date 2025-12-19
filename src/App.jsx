@@ -4,51 +4,59 @@ import MainLayout from "./layouts/MainLayout";
 import "./App.css";
 import Staffs from "./pages/Staffs";
 import Admissions from "./pages/Admissions";
-import Facilities from "./pages/Facilities";
-import PhysicsLab from "./facilities/PhysicsLab";
-import ChemistryLab from "./facilities/ChemistryLab";
-import BiologyLab from "./facilities/BiologyLab";
-import Playground from "./facilities/Playground";
-import Library from "./facilities/Library";
-import ComputerLab from "./facilities/ComputerLab";
-import Auditorium from "./facilities/Auditorium";
-import StaffRoom from "./facilities/StaffRoom";
-import Infrastructure from "./facilities/Infrastructure";
+import Profile from "./Abouts/Profile";
+import Principal from "./Abouts/Principal";
+import Founder from "./Abouts/Founder";
+import Philosophy from "./Abouts/Philosophy";
+import Milestones from "./Abouts/Milestones";
+import Campus from "./pages/Campus";
+import CampusDetail from "./pages/CampusDetail";
+import Alumni from "./pages/Alumni";
+import NewsDetails from "./pages/NewsDetails";
+import News from "./pages/News";
+import Disclosures from "./pages/Disclosures";
+import Loading from "./components/Loading";
 
 // Lazy imports
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Academics = lazy(() => import("./pages/Academics"));
-const Management = lazy(() => import("./pages/Management"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Gallery = lazy(() => import("./pages/Gallery"));
+const ManagementAbout = lazy(() => import("./Abouts/Management"));
 
 const App = () => {
   return (
-    <Suspense fallback={<div className="loader">Loading...</div>}>
+    <Suspense fallback={<Loading />}>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="facilities" element={<Facilities />} />
+          <Route path="alumni" element={<Alumni />} />
+          <Route path="campus" element={<Campus />} />
           <Route path="staff" element={<Staffs />} />
           <Route path="contact" element={<Contact />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="academics" element={<Academics />} />
           <Route path="admissions" element={<Admissions />} />
-          <Route path="management" element={<Management />} />
+          <Route path="disclosures" element={<Disclosures />} />
         </Route>
-        <Route path="/facilities" element={<MainLayout />}> 
-          <Route index element={<Facilities />} />
-          <Route path="lab-physics" element={<PhysicsLab />} />
-          <Route path="lab-chemistry" element={<ChemistryLab />} />
-          <Route path="lab-bio" element={<BiologyLab />} />
-          <Route path="playground" element={<Playground />} />
-          <Route path="library" element={<Library />} />
-          <Route path="computers" element={<ComputerLab />} />
-          <Route path="auditorium" element={<Auditorium />} />
-          <Route path="staffroom" element={<StaffRoom />} />
-          <Route path="scenery" element={<Infrastructure />} />
+        <Route path="/about" element={<MainLayout />}>
+          <Route index element={<About />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="principal" element={<Principal />} />
+          <Route path="founder" element={<Founder />} />
+          <Route path="milestones" element={<Milestones />} />
+          <Route path="educational-philosophy" element={<Philosophy />} />
+          <Route path="management" element={<ManagementAbout />} />
+        </Route>
+        <Route path="/campus" element={<MainLayout />}>
+          <Route index element={<Campus />} />
+          <Route path=":id" element={<CampusDetail />} />
+        </Route>
+        <Route path="/news" element={<MainLayout />}>
+          <Route index element={<News />} />
+          <Route path=":id" element={<NewsDetails />} />
         </Route>
       </Routes>
     </Suspense>
